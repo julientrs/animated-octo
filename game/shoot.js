@@ -51,6 +51,10 @@ function bullet_collision()
             player1.bullets.splice(i, 1);
             i--;
         }
+        var xaround = Math.abs((player1.bullets[i].position.x) - ennemy.graphic.position.x);
+        var yaround = Math.abs((player1.bullets[i].position.y) - ennemy.graphic.position.y);
+        if (xaround < 20 && yaround < 20)
+            scene.remove(ennemy.graphic)
     }
 
 }

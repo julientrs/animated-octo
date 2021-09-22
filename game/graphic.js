@@ -27,14 +27,39 @@ function init()
     
     player1 = new Player("player1", 0xffff00, new THREE.Vector2(0, 0), 0);
     scene.add(player1.graphic);
+    var x = getRandomIntInclusive(-300, 300)
+    var y = getRandomIntInclusive(-200, 200)
+    ennemy = new Ennemy("ennemy", 0xF910C1, new THREE.Vector2(x, y), 0);
+    ennemy.graphic.position = {x: x, y: y, isVector2: true}
+    scene.add(ennemy.graphic);
+    // for (var i = 0; i < 10; i++) {
+    //     var ennemy = generateEnnemy()
+    //     console.log(ennemy)
+    //     scene.add(ennemy.graphic);
+    // }
 
     light1 = new Light("sun", 0xffffff, "0,0,340");
     scene.add(light1);
 }
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min +1)) + min;
+  }
+
+function generateEnnemy() { 
+    var x = getRandomIntInclusive(-300, 300)
+    var y = getRandomIntInclusive(-200, 200)
+    ennemy = new Ennemy("ennemy", 0xF910C1, new THREE.Vector2(x, y), 0);
+    ennemy.graphic.position = {x: x, y: y, isVector2: true}
+    return ennemy
+}
+
 function Ground(color, size_x, size_y, nb_tile)
 {
     colors = Array(0xff0000, 0x00ff00, 0x0000ff, 0x000000);
+    console.log("sizex", size_x, "sizey", size_y)
 
     sizeOfTileX = size_x / nb_tile;
     minX = -(size_x/2);
